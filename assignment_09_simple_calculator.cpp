@@ -73,3 +73,93 @@
 #include <cmath>
 using namespace std;
 
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return 0;
+    }
+    return a / b;
+}
+
+double modulus(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return 0;
+    }
+    return fmod(a, b);
+}
+
+double power(double a, double b) {
+    return pow(a, b);
+}
+
+int main() {
+    int choice;
+    double a, b, result;
+
+    do {
+        cout << "============================\n";
+        cout << "     SIMPLE CALCULATOR\n";
+        cout << "============================\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. Modulus\n";
+        cout << "6. Exponentiation\n";
+        cout << "7. Quit\n";
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 6) {
+            cout << "Enter first number: ";
+            cin >> a;
+            cout << "Enter second number: ";
+            cin >> b;
+
+            if (choice == 1) {
+                result = add(a, b);
+                cout << "Result: " << a << " + " << b << " = " << fixed << setprecision(2) << result << endl;
+            } else if (choice == 2) {
+                result = subtract(a, b);
+                cout << "Result: " << a << " - " << b << " = " << fixed << setprecision(2) << result << endl;
+            } else if (choice == 3) {
+                result = multiply(a, b);
+                cout << "Result: " << a << " * " << b << " = " << fixed << setprecision(2) << result << endl;
+            } else if (choice == 4) {
+                result = divide(a, b);
+                if (b != 0) {
+                    cout << "Result: " << a << " / " << b << " = " << fixed << setprecision(2) << result << endl;
+                }
+            } else if (choice == 5) {
+                result = modulus(a, b);
+                if (b != 0) {
+                    cout << "Result: " << a << " % " << b << " = " << fixed << setprecision(2) << result << endl;
+                }
+            } else if (choice == 6) {
+                result = power(a, b);
+                cout << "Result: " << a << " ^ " << b << " = " << fixed << setprecision(2) << result << endl;
+            }
+        } else if (choice == 7) {
+            cout << "Goodbye!" << endl;
+        } else {
+            cout << "Error: Invalid choice." << endl;
+        }
+
+    } while (choice != 7);
+
+    return 0;
+}
+
